@@ -118,11 +118,24 @@ function output( data ) {
 function outputLinesWithDelay( lines, delayed, resolve ) {
     const line = lines.shift();
     printLine( line );
+    window.scrollTo( 0, getDocHeight_() );
     if ( lines.length > 0 ) {
+        hidePrompt();
         setTimeout( outputLinesWithDelay, delayed, lines, delayed, resolve );
     } else if ( resolve ) {
+        showPrompt();
         resolve();
     }
+}
+
+function hidePrompt() {
+    console.log( "hiding prompt" );
+    $( ".input-line" ).last().hide();
+}
+
+function showPrompt() {
+    console.log( "showing prompt" );
+    $( ".input-line" ).last().show();
 }
 
 /**

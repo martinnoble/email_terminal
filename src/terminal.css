@@ -117,7 +117,7 @@ body {
   color: inherit;
 }
 .ls-files {
-  column-width: 100px;
+  column-width: 200px;
 }
 
 /* Special FX */
