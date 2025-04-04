@@ -1,8 +1,8 @@
 {
     "serverAddress": "localhost",
-    "serverName": "Node Y56 Intranet",
-    "iconName": "Moon-icon.png",
-    "terminalID": "Y56",
+    "serverName": "SciNet Datacore",
+    "iconName": "database_icon.png",
+    "terminalID": "SCD156",
     "defaultUser": {
         "userId": "user",
         "password": "",

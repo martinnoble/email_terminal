@@ -1,3 +1,11 @@
+
+@font-face {
+  font-family: 'BBCMicro';
+  font-style: normal;
+  font-weight: 400;
+  src: url(fonts/bbc-micro/bbc-micro.ttf) format('truetype');
+}
+
 /* vietnamese */
 @font-face {
   font-family: 'Inconsolata';
@@ -47,8 +55,8 @@ html, body {
   margin: 0;
 }
 body {
-  font-size: 11pt;
-  font-family: Inconsolata, monospace;
+  font-size: 18pt;
+  font-family: BBCMicro, monospace;
   color: white;
   background-color: black;
 }

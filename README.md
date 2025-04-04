@@ -439,3 +439,9 @@ through a GitHub issue/PR or by contacting the author on Reddit.
 
 ### Icons Acknowledgement (not included)
 - (non-free) DNA icon by: https://www.iconfinder.com/icons/378473/dna_icon
+
+
+### Font
+
+The FontStruction “BBC Micro” (https://fontstruct.com/fontstructions/show/559856) by Wesley Clarke is licensed under a Creative Commons Attribution Share Alike license (http://creativecommons.org/licenses/by-sa/3.0/).
+[ancestry]
