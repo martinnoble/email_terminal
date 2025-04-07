@@ -36,14 +36,14 @@ function setHeader( msg ) {
     const promptText = `[${ userDatabase.userName }@${ serverDatabase.terminalID }] # `;
 
     initDateObject();
-    const dateStr = `${ serverDate.day }/${ serverDate.month }/${ serverDate.year }`;
+    //const dateStr = `${ serverDate.day }/${ serverDate.month }/${ serverDate.year }`;
     const imgUrl = `config/network/${ serverDatabase.serverAddress }/${ serverDatabase.iconName }`;
     const imgSize = serverDatabase.iconSize || 100;
     const header = `
     <img src="${ imgUrl }" width="${ imgSize }" height="${ imgSize }"
          style="float: left; padding-right: 10px" class="${ serverDatabase.iconClass || "" }">
     <h2 style="letter-spacing: 4px">${ serverDatabase.serverName }</h2>
-    <p>Logged in: ${ serverDatabase.serverAddress } (&nbsp;${ dateStr }&nbsp;) </p>
+    <p>Logged in: ${ serverDatabase.serverAddress }</p>
     ${ serverDatabase.headerExtraHTML || "" }
     <p>Enter "help" for more information.</p>
     `;
@@ -55,6 +55,7 @@ function setHeader( msg ) {
     }
     output( [ header, msg ] ).then( () => applySFX() );
     $( ".prompt" ).html( promptText );
+    $( ".cmdline" ).focus();
 }
 
 /**
@@ -146,6 +147,7 @@ function showPrompt() {
  */
 function printLine( data ) {
     data ||= "";
+    //data = data.replaceAll( " ", "&nbsp;" );
     if ( !data.startsWith( "<" ) ) {
         data = `<p>${ data }</p>`;
     }

@@ -354,3 +354,13 @@ body {
       0px -10px 100px #7b96b8, 0px -10px 100px #7b96b8;
   }
 }
+
+
+.blink {
+  animation: blinker 1s step-start infinite;
+}
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}

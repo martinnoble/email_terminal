@@ -1,4 +1,33 @@
 {
+    "hack": {},
+
+    "exfiltrate": {},
+
+    "find": {},
+
+    "dump": {},
+
+    "table": {
+        "help": "Display and table of data",
+        "delayed": 200,
+        "message": [
+            "Security Clearance: <span class=blink>MK Ultra</span>",
+            "<br/>",
+            "<p style='white-space: pre'>|---------Name---------|-Zone-|---Location---|--Status--|</p>",
+            "<p style='white-space: pre'>| Dr John Smith        |  Q   | UNIT, UK     |  Omega   |</p>",
+            "<p style='white-space: pre'>| Dr Annie Tyler       |  A   | Unknown      |  Omicron |</p>",
+            "<p style='white-space: pre'>| Dr Margaret Davidson |  A   | Krakow, PL   |  Gamma   |</p>",
+            "<p style='white-space: pre'>| Dr Kathleen Power    |  L   | London, UK   |  Alpha   |</p>",
+            "<p style='white-space: pre'>| Dr Sharon Morris     |  A   | Paris, FR    |  Delta   |</p>",
+            "<p style='white-space: pre'>| Dr Eddie Clargo      |  C   | Berlin, DE   |  Beta    |</p>",
+            "<p style='white-space: pre'>| Professor Elemental  |  Q   | Brighton, UK |  Sigma   |</p>",
+            "<p style='white-space: pre'>| Dr Hannah Owen       |  K   | Swindon, UK  |  Alpha   |</p>",
+            "<p style='white-space: pre'>| Dr James Todd        |  K   | Reading, UK  |  Phi     |</p>",
+            "<p style='white-space: pre'>| Dr Eric Wolstenholme |  B   | Uppsala, SE  |  Gamma   |</p>",
+            "<p style='white-space: pre'>|----------------------|------|------------  |----------|</p>"
+        ]
+    },
+
     "demo.exe": {
         "help": "Demonstrate some rendering features",
         "clear": true,

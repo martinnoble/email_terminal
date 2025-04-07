@@ -29,7 +29,7 @@ function hackRevealText( paragraph, options ) { /* eslint-disable-line no-unused
             clearInterval( interv );
         }
         globalCount++;
-    }, 50 );
+    }, 75 );
 }
 
 function getRandLetter( alphabet ) {

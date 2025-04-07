@@ -9,6 +9,174 @@
  */
 /* eslint-disable no-inner-declarations, no-nested-ternary, no-sequences, no-unused-vars */
 
+
+function hack( args ) {
+    output( `Hacking: '${ args[ 0 ] }'` );
+    output( {
+        delayed: 1000,
+        text: [
+            "Scanning accounts",
+            "ROOT account found - cracking passwords",
+            "Verifying keys: <span class=hack-reveal data-alphabet=uppercase data-iterations-before-reveal=12 data-preserve-spaces=true>yi!B4iqprfmRojxvP*HC</span>"
+        ]
+    } ).then( () => {
+        hidePrompt();
+        setTimeout( () => {
+            output( "Password found - logging in" );
+        }, 2500 );
+        setTimeout( () => {
+            showPrompt();
+            system.login( [ "admin:admin" ] );
+        }, 4000 );
+    } );
+}
+
+function hidePrompt() {
+    console.log( "hiding prompt" );
+    $( ".input-line" ).last().hide();
+}
+
+function showPrompt() {
+    console.log( "showing prompt" );
+    $( ".input-line" ).last().show();
+}
+
+function updateProgress( location, char, len, value, resolve ) {
+    console.log("Char", char);
+    const full = char.repeat( value );
+    const empty = "&nbsp;".repeat( len - value );
+
+    location.innerHTML = full + empty;
+
+    if ( len === value ) {
+        resolve();
+    } else {
+        const timeout = 50 + Math.floor( Math.random() * 201 );
+        setTimeout( updateProgress, timeout, location, char, len, value + 1, resolve );
+    }
+}
+
+function doEncrypt() {
+    return new Promise( ( resolve ) => {
+        output( "Enter encryption key: [<span id=\"enckey\"></span>]" )
+            .then( () => {
+                const progressbar = $( "#enckey" )[ 0 ];
+                updateProgress( progressbar, "*", 8, 0, resolve );
+            } );
+    } );
+}
+
+function doCopy() {
+    return new Promise( ( resolve ) => {
+        output( "Copying: [<span id=\"copydata\"></span>]" )
+            .then( () => {
+                const progressbar = $( "#copydata" )[ 0 ];
+                updateProgress( progressbar, "#", 15, 0, resolve );
+            } );
+    } );
+}
+
+function doErase() {
+    return new Promise( ( resolve ) => {
+        output( "Erasing: [<span id=\"erasedata\"></span>]" )
+            .then( () => {
+                const progressbar = $( "#erasedata" )[ 0 ];
+                updateProgress( progressbar, "#", 15, 0, resolve );
+            } );
+    } );
+}
+
+function exfiltrate( args ) {
+    return new Promise( ( resolve ) => {
+        hidePrompt();
+        output( `Copying and destroying '${ args[ 0 ] }'` );
+        output( "<br/>" );
+        doEncrypt().then( () => {
+            doCopy().then( () => {
+                doErase().then( () => {
+                    output( "Data confirmed destroyed" );
+                    showPrompt();
+                } );
+            } );
+        } );
+    } );
+}
+
+function dump( args ) {
+    return new Promise( () => {
+
+        output( `Accessing database '${ args[ 0 ] }'` );
+        output( "Encrypted data found" );
+        output( {
+            delayed: 1000,
+            text: [
+                "Scanning memory for encryption keys....",
+                "Verifying keys: <span class=hack-reveal data-alphabet=uppercase data-iterations-before-reveal=12 data-preserve-spaces=true>A4FB453FF901</span>",
+                "Valid key found - decrypting",
+                "<br/>"
+            ]
+
+        } ).then( () => {
+            output( {
+                delayed: 200,
+                text: [
+                    `Database: '${ args[ 0 ] }' Table: '#scientists'`,
+                    "Security Clearance: <span class=blink>MK Ultra</span>",
+                    "<br/>",
+                    "<p style='white-space: pre'>|---------Name---------|-Zone-|---Location---|--Status--|</p>",
+                    "<p style='white-space: pre'>| Dr John Smith        |  Q   | UNIT, UK     |  Omega   |</p>",
+                    "<p style='white-space: pre'>| Dr Annie Tyler       |  A   | Unknown      |  Omicron |</p>",
+                    "<p style='white-space: pre'>| Dr Margaret Davidson |  A   | Krakow, PL   |  Gamma   |</p>",
+                    "<p style='white-space: pre'>| Dr Kathleen Power    |  L   | London, UK   |  Alpha   |</p>",
+                    "<p style='white-space: pre'>| Dr Sharon Morris     |  A   | Paris, FR    |  Delta   |</p>",
+                    "<p style='white-space: pre'>| Dr Eddie Clargo      |  C   | Berlin, DE   |  Beta    |</p>",
+                    "<p style='white-space: pre'>| Professor Elemental  |  Q   | Brighton, UK |  Sigma   |</p>",
+                    "<p style='white-space: pre'>| Dr Hannah Owen       |  K   | Swindon, UK  |  Alpha   |</p>",
+                    "<p style='white-space: pre'>| Dr James Todd        |  K   | Reading, UK  |  Phi     |</p>",
+                    "<p style='white-space: pre'>| Dr Eric Wolstenholme |  B   | Uppsala, SE  |  Gamma   |</p>",
+                    "<p style='white-space: pre'>|----------------------|------|--------------|----------|</p>"
+                ]
+            } ).then( () => {
+                $( ".cmdline" ).focus();
+            } );
+        } );
+    } );
+}
+
+function find( args ) {
+    return new Promise( () => {
+        output( `Finding '${ args[ 0 ] }'` ).then( () => {
+            output( {
+                delayed: 2000,
+                text: [
+                    "Searching active memory...",
+                    "&nbsp;0 results"
+                ]
+            } ).then( () => {
+                output( {
+                    delayed: 1500,
+                    text: [
+                        "Searching garbage files...",
+                        "&nbsp;0 results"
+                    ]
+                } ).then( () => {
+                    output( {
+                        delayed: 1000,
+                        text: [
+                            "Searching databases...",
+                            "&nbsp;$coredata#scientists"
+                        ]
+                    } ).then( () => {
+                        output( "&nbsp;1 result" );
+                        $( ".cmdline" ).focus();
+                    } );
+                } );
+            } );
+        } );
+    } );
+}
+
+
 function decrypt( args ) { // The same function can be used to encode text
     if ( args.length === 0 ) {
         return "<p>Some encrypted text must be provided: <code>decrypt 53CR3T T3XT</code></p>";
